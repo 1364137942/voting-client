@@ -18,5 +18,6 @@ ReactDOM.render(
     <Router history={hashHistory}>
         {routes}
     </Router>,
+    // <Results/>,
     document.getElementById('app')
 );

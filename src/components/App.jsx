@@ -6,8 +6,18 @@ import {List} from 'immutable';
 
 const pair = List.of('Trainspotting', '28 Days Later');
 
-export default React.createClass({
-    render: function() {
-        return React.cloneElement(this.props.children, {pair: pair});
+class App extends React.Component{
+    // 构造
+      constructor(props) {
+        super(props);
+        // 初始状态
+        this.state = {};
+      }
+    render(){
+        return(
+            React.cloneElement(this.props.children, {pair: pair})
+        );
     }
-});
+}
+
+module.exports = App;

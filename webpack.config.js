@@ -4,10 +4,11 @@
 
 var webpack = require('webpack');
 module.exports = {
+    port: 8080,
     entry: [
-        'webpack-dev-server/client?http://localhost:8080',
+        'webpack-dev-server/client?http://127.0.0.1:8080',
         'webpack/hot/only-dev-server',
-        './src/index.jsx'
+        './src/index'
     ],
     output: {
         path: __dirname + '/dist',
@@ -17,12 +18,12 @@ module.exports = {
     devServer: {
         contentBase: './dist',
         hot: true,
+        port: 8080,
         inline: true,
-        process: true,
-        stats: {
+        stats:{
             colors: true
         },
-        port: 8080,
+        process: true,
         publicPath: '/'
     },
     module: {
@@ -30,7 +31,7 @@ module.exports = {
             {
                 test: /\.jsx/,
                 exclude: /node_modules/,
-                loader: 'react-hot-loader/webpack!babel'
+                loader: 'react-hot-loader/webpack!babel-loader?presets[]=es2015&presets[]=react'
             }
         ]
     },

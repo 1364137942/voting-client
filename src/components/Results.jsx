@@ -19,7 +19,7 @@ class Results extends React.Component{
 
     render(){
         return (
-            <div>Hello from r</div>
+            <div>Hello from resussss</div>
         )
     }
 }
