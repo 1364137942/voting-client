@@ -16,7 +16,14 @@ module.exports = {
     },
     devServer: {
         contentBase: './dist',
-        hot: true
+        hot: true,
+        inline: true,
+        process: true,
+        stats: {
+            colors: true
+        },
+        port: 8080,
+        publicPath: '/'
     },
     module: {
         loaders: [
@@ -31,6 +38,7 @@ module.exports = {
         extensions: ['', '.js', '.jsx']
     },
     plugins: [
+        new webpack.NoErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ]
 };

@@ -6,7 +6,7 @@
   "scripts": {
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js \"test/**/*@(.js|.jsx)\"",
     "test:watch": "npm run test -- --watch",
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server --hot --inline"
   },
   "author": "",
   "license": "ISC",
@@ -32,7 +32,9 @@
   "dependencies": {
     "immutable": "^3.8.1",
     "react": "^15.4.1",
+    "react-addons-pure-render-mixin": "^15.4.1",
     "react-addons-test-utils": "^15.4.1",
-    "react-dom": "^15.4.1"
+    "react-dom": "^15.4.1",
+    "react-router": "^3.0.0"
   }
 }
