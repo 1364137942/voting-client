@@ -1,30 +1,37 @@
 /**
  * Created by ali on 16-11-25.
  */
-import React, {Component} from 'react';
 
-class Voting extends Component{
-    constructor(props){
+import React from 'react';
+import Vote from './Vote';
+import Winner from './Winner';
+import shallowCompare from 'react/lib/shallowCompare'
+class Voting extends React.Component{
+    // 构造
+      constructor(props) {
         super(props);
-        this.state = {}
-    }
-    getPair(){
-        return this.props.pair || [];
-    }
+        // 初始状态
+        this.state = {};
+      }
 
+    shouldComponentUpdate(nextProps, nextState) {
+        // pure render
+        return shallowCompare(this, nextProps, nextState);
+    }
     render(){
-        return(
-            <div className="voting">
-                {this.getPair().map((entry) => {
-                    return (
-                        <button key={entry}>
-                            <h1>{entry}</h1>
-                        </button>
-                    )
-                })}
+        return (
+            <div>
+                {this.renderComponent()}
             </div>
         )
     }
+
+    renderComponent(){
+        return this.props.winner ?
+            <Winner ref="winner" winner={this.props.winner}/> :
+            <Vote {...this.props}/>
+    }
 }
 
-module.exports =  Voting;
+module.exports = Voting;
+

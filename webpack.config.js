@@ -3,6 +3,7 @@
  */
 var webpack = require('webpack');
 module.exports = {
+    port: 8080,
     entry: [
         'webpack-dev-server/client?http://localhost:8080',
         'webpack/hot/only-dev-server',
@@ -15,14 +16,21 @@ module.exports = {
     },
     devServer: {
         contentBase: './dist',
-        hot: true
+        hot: true,
+        port: 8080,
+        inline: true,
+        stats:{
+            colors: true
+        },
+        process: true,
+        publicPath: '/'
     },
     module: {
         loaders: [
             {
                 test: /\.jsx/,
                 exclude: /node_modules/,
-                loaders: ['react-hot-loader/webpack', 'babel']
+                loader: 'react-hot-loader/webpack!babel-loader?presets[]=es2015&presets[]=react'
             }
         ]
     },
@@ -30,7 +38,7 @@ module.exports = {
         extensions: ['', '.js', '.jsx']
     },
     plugins: [
+        new webpack.NoErrorsPlugin(),
         new webpack.HotModuleReplacementPlugin()
     ]
-
 };
